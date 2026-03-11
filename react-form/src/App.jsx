@@ -44,11 +44,12 @@ function App() {
           {/* Bonus Modifica post */}
           {editPost !== null && <ModifyPosts toModify={postQuery.find((toModify) => toModify.id === editPost)} setEditPost={setEditPost} updatePost={updatePost} />}
 
+          {/* Bonus Elimina post */}
           {deletePost !== null && <DeletePosts deletePost={deletePost} erasePost={erasePost} setDeletePost={setDeletePost} />}
 
           {/* Aggiungi Post */}
           <button className="btn btn-success add-post" onClick={() => setIsAddingPost(true)}>Aggiungi un post</button>
-          {isAddingPost && <AddPosts setIsAddingPost={setIsAddingPost} isAddingPost={isAddingPost} newPost={newPost} setNewPost={setNewPost} addPost={addPost} />}
+          {isAddingPost && <AddPosts setIsAddingPost={setIsAddingPost} newPost={newPost} setNewPost={setNewPost} addPost={addPost} />}
         </main>
       </div>
     </>

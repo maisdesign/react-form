@@ -1,7 +1,7 @@
 
-function AddPosts({ setIsAddingPost, isAddingPost, setNewPost, newPost, addPost }) {
+function AddPosts({ setIsAddingPost, setNewPost, newPost, addPost }) {
     return <>
-        <form onSubmit={(e) => { e.preventDefault(); addPost(); setIsAddingPost(!isAddingPost) }}>
+        <form onSubmit={(e) => { e.preventDefault(); addPost(); setIsAddingPost(false) }}>
             <div className="mb-3">
                 <label htmlFor="postTitle" className="form-label">Titolo</label>
                 <input type="text" className="form-control" id="postTitle" aria-describedby="postTitle" value={newPost.title} onChange={(c) => setNewPost({ ...newPost, title: c.target.value })} >
