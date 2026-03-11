@@ -20,7 +20,6 @@ function App() {
 
   function updatePost(modifiedPost) {
     setPostQuery(postQuery.map((post) => ((post.id === modifiedPost.id) ? { ...post, ...modifiedPost } : { ...post })))
-    console.log("Questo è modifiedPost" + modifiedPost);
   }
 
   return (
