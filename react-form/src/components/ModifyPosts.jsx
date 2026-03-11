@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ModifyPosts({ toModify, setEditPost, updatePost }) {
+function ModifyPosts({ toModify, updatePost }) {
     const [modifiedPost, setModifiedPost] = useState({ id: toModify.id, title: toModify.title, body: toModify.body })
 
     return <>
