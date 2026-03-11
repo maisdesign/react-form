@@ -21,7 +21,8 @@ function App() {
   }
 
   function updatePost(modifiedPost) {
-    setPostQuery(postQuery.map((post) => ((post.id === modifiedPost.id) ? { ...post, ...modifiedPost } : { ...post })))
+    setPostQuery(postQuery.map((post) => ((post.id === modifiedPost.id) ? { ...post, ...modifiedPost } : { ...post })));
+    setEditPost(null);
   }
 
   function erasePost(toDelete) {
@@ -31,19 +32,25 @@ function App() {
 
   return (
     <>
-      <h1>Blog</h1>
-      <ul className="posts-list">
-        <QueryPosts postQuery={postQuery} setEditPost={setEditPost} setDeletePost={setDeletePost} />
+      <div className="container">
+        <header className="top-header">
+          <h1>Blog</h1>
+        </header>
+        <main>
+          <div className="posts-list">
+            <QueryPosts postQuery={postQuery} setEditPost={setEditPost} setDeletePost={setDeletePost} />
 
-      </ul>
-      {/* Bonus Modifica post */}
-      {editPost !== null && <ModifyPosts toModify={postQuery.find((toModify) => toModify.id === editPost)} setEditPost={setEditPost} updatePost={updatePost} />}
+          </div>
+          {/* Bonus Modifica post */}
+          {editPost !== null && <ModifyPosts toModify={postQuery.find((toModify) => toModify.id === editPost)} setEditPost={setEditPost} updatePost={updatePost} />}
 
-      {deletePost !== null && <DeletePosts deletePost={deletePost} erasePost={erasePost} />}
+          {deletePost !== null && <DeletePosts deletePost={deletePost} erasePost={erasePost} setDeletePost={setDeletePost} />}
 
-      {/* Aggiungi Post */}
-      <button className="add-post" onClick={() => setIsAddingPost(true)}>Aggiungi un post</button>
-      {isAddingPost && <AddPosts setIsAddingPost={setIsAddingPost} isAddingPost={isAddingPost} newPost={newPost} setNewPost={setNewPost} addPost={addPost} />}
+          {/* Aggiungi Post */}
+          <button className="btn btn-success add-post" onClick={() => setIsAddingPost(true)}>Aggiungi un post</button>
+          {isAddingPost && <AddPosts setIsAddingPost={setIsAddingPost} isAddingPost={isAddingPost} newPost={newPost} setNewPost={setNewPost} addPost={addPost} />}
+        </main>
+      </div>
     </>
   )
 }

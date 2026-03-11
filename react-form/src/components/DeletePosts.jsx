@@ -1,8 +1,10 @@
-function DeletePosts({ erasePost, deletePost }) {
+function DeletePosts({ erasePost, deletePost, setDeletePost }) {
 
     return <>
-        <button className="post-delete" onClick={() => erasePost(deletePost)}>
+        <button className="btn btn-danger post-delete" onClick={() => erasePost(deletePost)}>
             Cancellalo</button >
+        <button type="button" className="btn btn-outline-danger" onClick={() => setDeletePost(null)}>Ripensaci
+        </button >
     </>
 }
 export default DeletePosts

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ModifyPosts({ toModify, updatePost }) {
+function ModifyPosts({ toModify, updatePost, setEditPost }) {
     const [modifiedPost, setModifiedPost] = useState({ id: toModify.id, title: toModify.title, body: toModify.body })
 
     return <>
@@ -15,9 +15,12 @@ function ModifyPosts({ toModify, updatePost }) {
                 <input type="textarea" className="form-control" id="postBody" aria-describedby="postBody" value={modifiedPost.body} onChange={(c) => setModifiedPost({ ...modifiedPost, body: c.target.value })} >
                 </input>
             </div>
-            <button type="submit" className="btn btn-primary">Submit
+            <button type="submit" className="btn btn-warning">Modfica
             </button>
+            <button type="button" className="btn btn-outline-warning" onClick={() => setEditPost(null)}>Ripensaci
+            </button >
         </form >
+
     </>
 }
 
