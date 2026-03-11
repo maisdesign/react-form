@@ -10,7 +10,7 @@ function App() {
   const [newPost, setNewPost] = useState({ title: '', body: '' });
 
   function addPost() {
-    const newId = posts.length + 1;
+    const newId = postQuery.length + 1;
     const timestamp = new Date().toISOString();
     setPostQuery([...postQuery, { id: newId, title: newPost.title, body: newPost.body, timestamp: timestamp }]);
     setNewPost({ title: '', body: '' });
