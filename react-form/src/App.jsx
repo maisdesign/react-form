@@ -1,3 +1,6 @@
+import { posts } from './data/posts'
+import { useState } from 'react'
+
 function App() {
   return (
     <>
