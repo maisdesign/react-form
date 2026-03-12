@@ -2,16 +2,12 @@ import { posts } from './data/posts'
 import { useState } from 'react'
 import QueryPosts from './components/QueryPosts.jsx'
 import AddPosts from './components/AddPosts.jsx'
-import ModifyPosts from './components/ModifyPosts.jsx'
-import DeletePosts from './components/DeletePosts.jsx'
 
 
 function App() {
   const [isAddingPost, setIsAddingPost] = useState(false);
   const [postQuery, setPostQuery] = useState(posts)
   const [newPost, setNewPost] = useState({ title: '', body: '' });
-  const [editPost, setEditPost] = useState(null);
-  const [deletePost, setDeletePost] = useState(null);
 
   function addPost() {
     const newId = postQuery.length + 1;
@@ -22,12 +18,10 @@ function App() {
 
   function updatePost(modifiedPost) {
     setPostQuery(postQuery.map((post) => ((post.id === modifiedPost.id) ? { ...post, ...modifiedPost } : { ...post })));
-    setEditPost(null);
   }
 
   function erasePost(toDelete) {
     setPostQuery(postQuery.filter((post) => ((post.id !== toDelete))));
-    setDeletePost(null);
   }
 
   return (
@@ -38,14 +32,8 @@ function App() {
         </header>
         <main>
           <div className="posts-list">
-            <QueryPosts postQuery={postQuery} setEditPost={setEditPost} setDeletePost={setDeletePost} />
-
+            <QueryPosts postQuery={postQuery} updatePost={updatePost} erasePost={erasePost} />
           </div>
-          {/* Bonus Modifica post */}
-          {editPost !== null && <ModifyPosts toModify={postQuery.find((toModify) => toModify.id === editPost)} setEditPost={setEditPost} updatePost={updatePost} />}
-
-          {/* Bonus Elimina post */}
-          {deletePost !== null && <DeletePosts deletePost={deletePost} erasePost={erasePost} setDeletePost={setDeletePost} />}
 
           {/* Aggiungi Post */}
           <button className="btn btn-success add-post" onClick={() => setIsAddingPost(true)}>Aggiungi un post</button>

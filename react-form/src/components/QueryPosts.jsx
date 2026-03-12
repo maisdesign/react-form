@@ -1,12 +1,7 @@
-function QueryPosts({ postQuery, setEditPost, setDeletePost }) {
+import PostItem from './PostItem.jsx';
+function QueryPosts({ postQuery, updatePost, erasePost }) {
     return postQuery.map((article) =>
-        <article key={article.id} className="post-title">
-            {article.title}
-            <button type="button" onClick={(e) => { e.preventDefault(); setEditPost(article.id) }}>O
-            </button>
-            <button type="button" onClick={(e) => { e.preventDefault(); setDeletePost(article.id) }} >X
-            </button>
-        </article>
+        <PostItem key={article.id} article={article} updatePost={updatePost} erasePost={erasePost} />
     )
 }
 export default QueryPosts
